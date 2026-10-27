@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Empresas Comex em Cotia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <a href="https://fateccotia.cps.sp.gov.br/">
+          <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/115/2024/07/logo-fatec_cotia.png" 
+               alt="Logo Fatec Cotia"
+               class="logo">
+        </a>
+        <div class="header-text">
+          <h1>Observatório Comex Cotia</h1>
+          <p>2026-09</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="highlight">
+      <h3>Resumo Geral</h3>
+      <div class="metric-card">
+        <strong>Total de empresas ativas em Cotia:</strong> 50.183<br>
+        <strong>Total de empresas com atividades passíveis de comex:</strong> 3.487<br>
+        <strong>Percentual de empresas com atividade passíveis de comex:</strong> 6.95%<br>
+        <strong>Total de empresas sem atividade Comex:</strong> 46.696
+      </div>
+    </div>
+
+    <div class="highlight">
+      <h3>Comex como Atividade Principal vs Secundária</h3>
+      <div class="metric-card">
+        <strong>Empresas com Comex como atividade PRINCIPAL:</strong> 1.093 (31.3%)<br>
+        <strong>Empresas com Comex como atividade SECUNDÁRIA:</strong> 2.394 (68.7%)
+      </div>
+    </div>
+
+    <div class="highlight">
+      <h3>Tempo Médio de Atividade</h3>
+      <div class="age-comparison">
+        <div class="age-card">
+          <h4>Geral (Todas as empresas)</h4>
+          <div class="metric-card">
+            <strong>Idade média:</strong> 6 anos e 8 meses<br>
+            <strong>Idade mediana:</strong> 3 anos e 8 meses<br>
+            <strong>Empresa mais antiga:</strong> 75 anos e 3 meses<br>
+            <strong>Empresa mais nova:</strong> 0 meses
+          </div>
+        </div>
+        <div class="age-card">
+          <h4>Empresas COMEX</h4>
+          <div class="metric-card">
+            <strong>Idade média:</strong> 9 anos e 1 mês<br>
+            <strong>Idade mediana:</strong> 5 anos e 3 meses<br>
+            <strong>Empresa mais antiga:</strong> 60 anos e 3 meses<br>
+            <strong>Empresa mais nova:</strong> 0 meses
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <h3>Crescimento Acumulado (Últimos 12 Meses)</h3>
+      <div class="growth-comparison">
+        <div class="growth-card">
+          <h4>Geral (Todas as empresas)</h4>
+          <div class="metric-card">
+            <strong>Crescimento:</strong> +23.26%<br>
+            De 40.714 para 50.183 empresas<br>
+            Diferença: 9.469 empresas
+          </div>
+        </div>
+        <div class="growth-card">
+          <h4>Empresas COMEX</h4>
+          <div class="metric-card comex-highlight">
+            <strong>Crescimento:</strong> +12.74%<br>
+            De 3.093 para 3.487 empresas<br>
+            Diferença: 394 empresas
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Gráficos Temporais</h2>
+    <div class="plot-container"><iframe src="graficos/crescimento_anual_empresas.html"></iframe></div>
+    <div class="plot-container"><iframe src="graficos/crescimento_acumulado_mensal.html"></iframe></div>
+    <div class="plot-container"><iframe src="graficos/evolucao_mensal_empresas.html"></iframe></div>
+    <hr class="linha">
+    <div class="plot-container"><iframe src="graficos/crescimento_anual_empresas_indice100.html"></iframe></div>
+    <div class="plot-container"><iframe src="graficos/crescimento_acumulado_mensal_indice100.html"></iframe></div>
+    <div class="plot-container"><iframe src="graficos/evolucao_mensal_empresas_indice100.html"></iframe></div>
+    
+    <h2>Análise Geográfica</h2>
+    <div class="plot-container"><iframe src="graficos/top_20_bairros_comparativo.html"></iframe></div>
+    <div class="plot-container"><iframe src="graficos/bairros_concentracao_comex.html"></iframe></div>
+    <div class="plot-container"><iframe src="graficos/top_10_bairros_comex_barras.html"></iframe></div>
+
+    <h2>Metodologia</h2>
+    <div class="methodology-section">
+      <p>Base de dados utilizada disponível em: <a href="https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj">Cadastro Nacional da Pessoa Jurídica - CNPJ</a></p>
+      <p>
+        Este dashboard analisa empresas passíveis de Comércio Exterior em Cotia/SP com status de atividade "Aberta" no mês 2026-09, com base em dois critérios complementares:
+        atividade econômica (CNAE) e palavras-chave em razão social ou nome fantasia.<br><br>
+        A classificação é feita usando um arquivo de referência com regras manuais para garantir precisão e evitar falsos positivos.
+      </p>
+      
+      <h3>Critérios de classificação</h3>
+      <p>As empresas são consideradas Comex se atenderem ao menos um dos critérios abaixo e não estiverem em categorias rejeitadas:</p>
+
+      <div class="criteria-grid">
+        <div class="criterion accept">
+          <h4>Aceita</h4>
+          <p>Empresas com CNAE marcado como <strong>"Aceita"</strong> <strong>OU</strong> que contenham <strong>palavras-chave</strong> em razão social/nome fantasia.</p>
+          <p><em>Exemplo de palavra-chave: "exportação", "importação", "internacional", "trade", etc.</em></p>
+        </div>
+        <div class="criterion reject">
+          <h4>Rejeita</h4>
+          <p>Empresas com CNAE marcado como <strong>"Rejeita"</strong> são <strong>excluídas</strong>, mesmo que atendam aos critérios positivos. Evitar falsos positivos.</p>
+          <p><em>Exemplo real: empresa com nome "Igreja Internacional" (contém "internacional") mas CNAE religioso → <strong>rejeitada</strong>.</em></p>
+        </div>
+        <div class="criterion neutral">
+          <h4>Ok</h4>
+          <p>Empresas com CNAE marcado como <strong>"Ok"</strong> são consideradas <strong>não-Comex</strong> por padrão, a menos que atendam a critérios de nome.</p>
+        </div>
+      </div>
+
+      <h3>Fluxo de classificação</h3>
+      <ol>
+        <li>Busca por palavras-chave em <em>razão social</em> e <em>nome fantasia</em> (normalizados: sem acentos, minúsculas);</li>
+        <li>Verificação de CNAE principal e CNAEs secundários;</li>
+        <li>Aplicação de regras: <strong>ACEITA</strong> se (palavra-chave ou CNAE aceito) e <strong>NÃO</strong> (CNAE rejeitado);</li>
+        <li>Resultado: coluna <code>is_comex = True/False</code> no dataset final.</li>
+      </ol>
+
+      <h3>Palavras-chave utilizadas na busca</h3>
+      <p>Foram usadas <strong>23</strong> palavras ou expressões para identificar empresas com atividade passíveis de comércio exterior:</p>
+      <div class="criteria-list">• Importação<br>• Exportação<br>• Importador<br>• Exportador<br>• Comercio exterior<br>• Comex<br>• Internaciona<br>• Trading<br>• Trade<br>• Aduan<br>• Tarifário<br>• OEA<br>• Agenciamento de carga<br>• Marítimo<br>• Shipping<br>• Aéreo<br>• Container<br>• Embarque<br>• Invoice<br>• Cambio<br>• Cabotagem<br>• Alfandega<br>• Transitário</div>
+
+      <h3>CNAEs considerados como <span class="tag accept">Aceita</span></h3>
+      <p><strong>31</strong> classes CNAE foram marcadas como atividade de Comex:</p>
+      <div class="criteria-list">• 10.11-2 – Abate de reses, exceto suínos<br>• 10.12-1 – Abate de suínos, aves e outros pequenos animais<br>• 13.11-1 – Preparação e fiação de fibras de algodão<br>• 20.13-4 – Fabricação de adubos e fertilizantes<br>• 25.31-4 – Produção de forjados de aço e de metais não-ferrosos e suas ligas<br>• 28.29-1 – Fabricação de máquinas e equipamentos de uso geral não especificados anteriormente<br>• 29.10-7 – Fabricação de automóveis, camionetas e utilitários<br>• 46.12-5 – Representantes comerciais e agentes do comércio de combustíveis, minerais, produtos siderúrgicos e químicos<br>• 46.17-6 – Representantes comerciais e agentes do comércio de produtos alimentícios, bebidas e fumo<br>• 46.18-4 – Representantes comerciais e agentes do comércio especializado em produtos não especificados anteriormente<br>• 46.19-2 – Representantes comerciais e agentes do comércio de mercadorias em geral não especializado<br>• 46.31-1 – Comércio atacadista de leite e laticínios<br>• 46.42-7 – Comércio atacadista de artigos do vestuário e acessórios<br>• 46.43-5 – Comércio atacadista de calçados e artigos de viagem<br>• 46.44-3 – Comércio atacadista de produtos farmacêuticos para uso humano e veterinário<br>• 46.61-3 – Comércio atacadista de máquinas, aparelhos e equipamentos para uso agropecuário; partes e peças<br>• 46.62-1 – Comércio atacadista de máquinas, equipamentos para terraplenagem, mineração e construção; partes e peças<br>• 46.69-9 – Comércio atacadista de máquinas, aparelhos e equipamentos não especificados anteriormente; partes e peças<br>• 46.81-8 – Comércio atacadista de combustíveis sólidos, líquidos e gasosos, exceto gás natural e GLP<br>• 46.84-2 – Comércio atacadista de produtos químicos e petroquímicos, exceto agroquímicos<br>• 46.91-5 – Comércio atacadista de mercadorias em geral, com predominância de produtos alimentícios<br>• 46.93-1 – Comércio atacadista de mercadorias em geral, sem predominância de alimentos ou de insumos agropecuários<br>• 52.11-7 – Armazenamento<br>• 52.12-5 – Carga e descarga<br>• 52.29-0 – Atividades auxiliares dos transportes terrestres não especificadas anteriormente<br>• 52.32-0 – Atividades de agenciamento marítimo<br>• 52.39-7 – Atividades auxiliares dos transportes aquaviários não especificadas anteriormente<br>• 52.50-8 – Atividades relacionadas à organização do transporte de carga<br>• 64.38-7 – Bancos de câmbio e outras instituições de intermediação não-monetária<br>• 70.20-4 – Atividades de consultoria em gestão empresarial<br>• 84.21-3 – Relações exteriores</div>
+
+      <h3>CNAEs marcados como <span class="tag reject">Rejeita</span></h3>
+      <p><strong>5</strong> classes CNAE foram excluídas para evitar falsos positivos (ex: instituições religiosas, entidades sem fins lucrativos):</p>
+      <div class="criteria-list">• 56.11-2 – Restaurantes e outros estabelecimentos de serviços de alimentação e bebidas<br>• 85.99-6 – Atividades de ensino não especificadas anteriormente<br>• 94.91-0 – Atividades de organizações religiosas<br>• 96.02-5 – Cabeleireiros e outras atividades de tratamento de beleza<br>• 96.09-2 – Atividades de serviços pessoais não especificadas anteriormente</div>
+    </div>
+  </div>
+</body>
+</html>

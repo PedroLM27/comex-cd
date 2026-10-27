@@ -1,0 +1,19 @@
+# dados brutos da Receita
+empresas/
+estabelecimentos/
+arquivos_unicos/
+cache/
+
+# saídas geradas
+outputs/
+graficos/
+dashboard.html
+*.xlsx
+*.csv
+
+# Python / Jupyter
+.ipynb_checkpoints/
+__pycache__/
+.env
+log_execucao.txt
+*.log

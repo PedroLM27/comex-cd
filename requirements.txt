@@ -1,0 +1,8 @@
+pandas
+polars
+pyarrow
+requests
+openpyxl
+plotly
+xlsxwriter
+python-dotenv

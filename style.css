@@ -1,0 +1,243 @@
+/* Observatório Comex Cotia - estilo do dashboard */
+
+:root {
+  --azul: #1f77b4;
+  --verde: #2ca02c;
+  --laranja: #ff7f0e;
+  --vermelho: #c0392b;
+  --texto: #1f2933;
+  --texto-suave: #52606d;
+  --fundo: #f4f6f8;
+  --cartao: #ffffff;
+  --borda: #dde3ea;
+  --raio: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--texto);
+  background: var(--fundo);
+  line-height: 1.55;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 48px;
+}
+
+/* ---------- Cabeçalho ---------- */
+header {
+  background: var(--cartao);
+  border-bottom: 4px solid var(--verde);
+  margin: 0 -20px 28px;
+  padding: 18px 20px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 64px;
+  width: auto;
+  display: block;
+}
+
+.header-text h1 {
+  margin: 0;
+  font-size: 1.7rem;
+  color: var(--texto);
+}
+
+.header-text p {
+  margin: 2px 0 0;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+/* ---------- Títulos ---------- */
+h2 {
+  margin: 40px 0 16px;
+  padding-bottom: 8px;
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--borda);
+}
+
+h3 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+h4 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+/* ---------- Blocos de resumo ---------- */
+.highlight {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-left: 5px solid var(--azul);
+  border-radius: var(--raio);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+
+.metric-card {
+  background: var(--fundo);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 0.97rem;
+}
+
+.metric-card strong {
+  color: var(--texto);
+}
+
+.comex-highlight {
+  background: #eaf6ea;
+  border-left: 4px solid var(--verde);
+}
+
+.age-comparison,
+.growth-comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.age-card,
+.growth-card {
+  min-width: 0;
+}
+
+/* ---------- Gráficos ---------- */
+.plot-container {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 8px;
+  margin-bottom: 18px;
+}
+
+.plot-container iframe {
+  display: block;
+  width: 100%;
+  height: 560px;
+  border: 0;
+}
+
+hr.linha {
+  border: 0;
+  border-top: 2px dashed var(--borda);
+  margin: 28px 0;
+}
+
+/* ---------- Metodologia ---------- */
+.methodology-section {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 22px 24px;
+}
+
+.methodology-section h3 {
+  margin-top: 26px;
+}
+
+.methodology-section a {
+  color: var(--azul);
+}
+
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.criterion {
+  border-radius: 8px;
+  padding: 14px 16px;
+  border: 1px solid var(--borda);
+}
+
+.criterion.accept {
+  background: #eaf6ea;
+  border-color: #b9dfb9;
+}
+
+.criterion.reject {
+  background: #fbeceb;
+  border-color: #efc4c0;
+}
+
+.criterion.neutral {
+  background: var(--fundo);
+}
+
+.criteria-list {
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.tag.accept {
+  background: #d4edd4;
+  color: #1d6b1d;
+}
+
+.tag.reject {
+  background: #f6d5d2;
+  color: var(--vermelho);
+}
+
+code {
+  background: var(--fundo);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* ---------- Telas pequenas ---------- */
+@media (max-width: 640px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-text h1 {
+    font-size: 1.35rem;
+  }
+
+  .plot-container iframe {
+    height: 460px;
+  }
+
+  .methodology-section {
+    padding: 16px;
+  }
+}
